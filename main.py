@@ -1,10 +1,8 @@
-#!/usr/bin/python3
-
 # -*- coding: utf-8 -*-
 
 # Form implementation generated from reading ui file 'main.ui'
 #
-# Created: Tue Sep 22 00:12:13 2015
+# Created: Tue Sep 22 11:53:08 2015
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -56,10 +54,12 @@ class Ui_Main(object):
         self.mainToolBar = QtWidgets.QToolBar(Main)
         self.mainToolBar.setObjectName("mainToolBar")
         Main.addToolBar(QtCore.Qt.TopToolBarArea, self.mainToolBar)
-        Main.insertToolBarBreak(self.mainToolBar)
         self.statusBar = QtWidgets.QStatusBar(Main)
         self.statusBar.setObjectName("statusBar")
         Main.setStatusBar(self.statusBar)
+        self.action = QtWidgets.QAction(Main)
+        self.action.setObjectName("action")
+        self.menu_3.addAction(self.action)
         self.menuBar.addAction(self.menu.menuAction())
         self.menuBar.addAction(self.menu_2.menuAction())
         self.menuBar.addAction(self.menu_3.menuAction())
@@ -81,4 +81,5 @@ class Ui_Main(object):
         self.menu_4.setTitle(_translate("Main", "Помощь"))
         self.menu_5.setTitle(_translate("Main", "Категории"))
         self.menu_6.setTitle(_translate("Main", "Дневник"))
+        self.action.setText(_translate("Main", "Добавить задачу"))
 
