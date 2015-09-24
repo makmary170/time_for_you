@@ -2,14 +2,17 @@
 
 # -*- coding: utf-8 -*-
 
+#from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5 import QtSql
+from taskui import Ui_AddTask
 from os import path
 
-class Task:
-    def __init__(self, name, desc):
+class AddTask(Ui_AddTask):          # QtWidgets.QDialog
+    def __init__(self):
+        super().__init__()
+        #self.buttonBox.accepted.connect(AddTask.createTask)
 
-        self.name = name
-        self.desc = desc
+    def createTask(self, name, desc):
         
         connect = QtSql.QSqlDatabase.addDatabase("QSQLITE", "Base")
         connect.setDatabaseName(path.expanduser('~/tasks.db'))

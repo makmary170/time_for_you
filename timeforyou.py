@@ -5,19 +5,18 @@
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from main import Ui_Main
-from taskui import Ui_AddTask
-from task import Task
+from task import AddTask
 
-class Main(QtWidgets.QMainWindow, Ui_Main, Ui_AddTask):
+class Main(QtWidgets.QMainWindow, Ui_Main):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
         self.model = QtGui.QStandardItemModel(self.listView)
         self.listView.setModel(self.model)
-        self.task_add_menu.triggered.connect(self.openAddTask)
+        self.task_add_menu.triggered.connect(self.openTaskUI)
 
-    def openAddTask(self):
-        self.addtask = Ui_AddTask()
+    def openTaskUI(self):
+        self.addtask = AddTask()
         self.addtask.ui = QtWidgets.QDialog()
         self.addtask.setupUi(self.addtask.ui)
         self.addtask.ui.show()
