@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-import sqlite3, os
+from PyQt5 import QtSql
 from os import path
 
 class Task:
@@ -11,14 +11,15 @@ class Task:
         self.name = name
         self.desc = desc
         
-        connect = sqlite3.connect(path.expanduser('~/tasks.db'))
-        cursor = connect.cursor()
-        cursor.execute('''CREATE TABLE if not exists Tasks
+        connect = QtSql.QSqlDatabase.addDatabase("QSQLITE", "Base")
+        connect.setDatabaseName(path.expanduser('~/tasks.db'))
+        connect.open()
+        cursor = QtSql.QSqlQuery(connect)
+        cursor.exec('''CREATE TABLE if not exists Tasks
                           (Name text, Desc text)''')
  
-        cursor.execute("INSERT INTO tasks VALUES ('%s','%s')" % (self.name, self.desc))
+        cursor.exec("INSERT INTO tasks VALUES ('%s','%s')" % (self.name, self.desc))
         
-        connect.commit()
         connect.close()
 
 if __name__ == "__main__":

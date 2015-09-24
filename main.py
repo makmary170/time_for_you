@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main.ui'
 #
-# Created: Tue Sep 22 11:53:08 2015
+# Created: Thu Sep 24 03:13:03 2015
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -25,7 +25,7 @@ class Ui_Main(object):
         self.listView.setGeometry(QtCore.QRect(430, 260, 321, 221))
         self.listView.setObjectName("listView")
         self.label = QtWidgets.QLabel(self.centralWidget)
-        self.label.setGeometry(QtCore.QRect(570, 220, 61, 31))
+        self.label.setGeometry(QtCore.QRect(580, 220, 61, 31))
         self.label.setObjectName("label")
         self.verticalScrollBar = QtWidgets.QScrollBar(self.centralWidget)
         self.verticalScrollBar.setGeometry(QtCore.QRect(1010, 270, 16, 211))
@@ -57,9 +57,9 @@ class Ui_Main(object):
         self.statusBar = QtWidgets.QStatusBar(Main)
         self.statusBar.setObjectName("statusBar")
         Main.setStatusBar(self.statusBar)
-        self.action = QtWidgets.QAction(Main)
-        self.action.setObjectName("action")
-        self.menu_3.addAction(self.action)
+        self.task_add_menu = QtWidgets.QAction(Main)
+        self.task_add_menu.setObjectName("task_add_menu")
+        self.menu_3.addAction(self.task_add_menu)
         self.menuBar.addAction(self.menu.menuAction())
         self.menuBar.addAction(self.menu_2.menuAction())
         self.menuBar.addAction(self.menu_3.menuAction())
@@ -81,5 +81,5 @@ class Ui_Main(object):
         self.menu_4.setTitle(_translate("Main", "Помощь"))
         self.menu_5.setTitle(_translate("Main", "Категории"))
         self.menu_6.setTitle(_translate("Main", "Дневник"))
-        self.action.setText(_translate("Main", "Добавить задачу"))
+        self.task_add_menu.setText(_translate("Main", "Добавить задачу"))
 
