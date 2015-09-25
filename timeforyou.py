@@ -5,20 +5,21 @@
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from main import Ui_Main
-from task import AddTask
+from task import Task
 
 class Main(QtWidgets.QMainWindow, Ui_Main):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.model = QtGui.QStandardItemModel(self.listView)
-        self.listView.setModel(self.model)
+        self.taskList = QtGui.QStandardItemModel(self.listView)
+        self.listView.setModel(self.taskList)
+        self.workTask = Task(self.taskList)   # Передаем объект модели классу Task                     
+        self.workTask.connect()               # для заполнения списка задач из БД
         self.task_add_menu.triggered.connect(self.openTaskUI)
-
+        self.workTask.genTasks() 
+        
     def openTaskUI(self):
-        self.addtask = AddTask()
-        self.addtask.show()
-
+        self.workTask.show()
         
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
