@@ -1,34 +1,30 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 # -*- coding: utf-8 -*-
 
-#from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5 import QtSql
 from taskui import Ui_AddTask
 from os import path
 
-class AddTask(Ui_AddTask):          # QtWidgets.QDialog
+class AddTask(QtWidgets.QDialog, Ui_AddTask):
+    
     def __init__(self):
         super().__init__()
-        #self.buttonBox.accepted.connect(AddTask.createTask)
-
-    def createTask(self, name, desc):
+        self.setupUi(self)
+        self.btn.accepted.connect(lambda: self.createTask(self.nameEdit.text(), self.descEdit.toPlainText()))
         
-        connect = QtSql.QSqlDatabase.addDatabase("QSQLITE", "Base")
-        connect.setDatabaseName(path.expanduser('~/tasks.db'))
-        connect.open()
-        cursor = QtSql.QSqlQuery(connect)
+    def createTask(self, name, desc):
+        connectdb = QtSql.QSqlDatabase.addDatabase("QSQLITE", "Base")
+        connectdb.setDatabaseName(path.expanduser('~/tasks.db'))
+        connectdb.open()
+        cursor = QtSql.QSqlQuery(connectdb)
         cursor.exec('''CREATE TABLE if not exists Tasks
                           (Name text, Desc text)''')
  
-        cursor.exec("INSERT INTO tasks VALUES ('%s','%s')" % (self.name, self.desc))
+        cursor.exec("INSERT INTO tasks VALUES ('%s','%s')" % (name, desc))
         
-        connect.close()
-
-if __name__ == "__main__":
-    task1 = Task('test', 'test desc')
-    print (task1.name)
-    print (task1.desc)
+        connectdb.close()
 
         
 

@@ -17,9 +17,7 @@ class Main(QtWidgets.QMainWindow, Ui_Main):
 
     def openTaskUI(self):
         self.addtask = AddTask()
-        self.addtask.ui = QtWidgets.QDialog()
-        self.addtask.setupUi(self.addtask.ui)
-        self.addtask.ui.show()
+        self.addtask.show()
 
         
 if __name__ == "__main__":
