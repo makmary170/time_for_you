@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main.ui'
 #
-# Created: Thu Sep 24 03:13:03 2015
+# Created: Sat Sep 26 10:29:34 2015
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -21,9 +21,17 @@ class Ui_Main(object):
         self.calendarWidget = QtWidgets.QCalendarWidget(self.centralWidget)
         self.calendarWidget.setGeometry(QtCore.QRect(440, 0, 321, 200))
         self.calendarWidget.setObjectName("calendarWidget")
-        self.listView = QtWidgets.QListView(self.centralWidget)
-        self.listView.setGeometry(QtCore.QRect(430, 260, 321, 221))
-        self.listView.setObjectName("listView")
+        self.taskList = QtWidgets.QListWidget(self.centralWidget)
+        self.taskList.setGeometry(QtCore.QRect(440, 260, 311, 221))
+        font = QtGui.QFont()
+        font.setPointSize(9)
+        font.setBold(True)
+        font.setWeight(75)
+        self.taskList.setFont(font)
+        self.taskList.setFocusPolicy(QtCore.Qt.WheelFocus)
+        self.taskList.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.taskList.setProperty("isWrapping", False)
+        self.taskList.setObjectName("taskList")
         self.label = QtWidgets.QLabel(self.centralWidget)
         self.label.setGeometry(QtCore.QRect(580, 220, 61, 31))
         self.label.setObjectName("label")
@@ -72,7 +80,7 @@ class Ui_Main(object):
 
     def retranslateUi(self, Main):
         _translate = QtCore.QCoreApplication.translate
-        Main.setWindowTitle(_translate("Main", "Main"))
+        Main.setWindowTitle(_translate("Main", "Time For You"))
         self.label.setText(_translate("Main", "<html><head/><body><p><span style=\" font-size:20pt; font-weight:600; color:#345abc;\">GTD</span></p></body></html>"))
         self.label_2.setText(_translate("Main", "<html><head/><body><p><span style=\" font-size:20pt; font-weight:600; color:#345abc;\">Расписание</span></p></body></html>"))
         self.menu.setTitle(_translate("Main", "Файл"))

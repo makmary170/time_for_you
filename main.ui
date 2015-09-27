@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Main</string>
+   <string>Time For You</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QTableView" name="tableView">
@@ -34,14 +34,30 @@
      </rect>
     </property>
    </widget>
-   <widget class="QListView" name="listView">
+   <widget class="QListWidget" name="taskList">
     <property name="geometry">
      <rect>
-      <x>430</x>
+      <x>440</x>
       <y>260</y>
-      <width>321</width>
+      <width>311</width>
       <height>221</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::WheelFocus</enum>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="isWrapping" stdset="0">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -84,7 +100,7 @@
     </property>
    </widget>
    <zorder>calendarWidget</zorder>
-   <zorder>listView</zorder>
+   <zorder>taskList</zorder>
    <zorder>label</zorder>
    <zorder>verticalScrollBar</zorder>
    <zorder>label_2</zorder>
