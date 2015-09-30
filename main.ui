@@ -197,7 +197,7 @@
      <string>Задачи</string>
     </property>
     <addaction name="task_add_menu"/>
-    <addaction name="action"/>
+    <addaction name="fast_task_add_menu"/>
     <addaction name="action_2"/>
     <addaction name="separator"/>
     <addaction name="action_4"/>
@@ -281,7 +281,7 @@
     <string>Добавить задачу</string>
    </property>
   </action>
-  <action name="action">
+  <action name="fast_task_add_menu">
    <property name="text">
     <string>Быстрое создание задачи</string>
    </property>
@@ -386,10 +386,7 @@
      <normaloff>icons/contract11.svg</normaloff>icons/contract11.svg</iconset>
    </property>
    <property name="text">
-    <string>Добавление быстрой задачи</string>
-   </property>
-   <property name="toolTip">
-    <string>Добавление быстрой задачи</string>
+    <string>Быстрое создание задачи</string>
    </property>
   </action>
   <action name="tracker_bar">

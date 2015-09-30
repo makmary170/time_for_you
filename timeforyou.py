@@ -13,7 +13,7 @@ class Main(QtWidgets.QMainWindow, Ui_Main):
         self.setupUi(self)
         self.workTask = Task(self.taskList)   # Передаем объект модели классу Task                     
         self.workTask.connect()               # для заполнения списка задач из БД
-        self.task_add_menu.triggered.connect(self.openTaskUI)
+        self.fast_task_add_menu.triggered.connect(self.openTaskUI)
         self.workTask.genTasks() 
         
     def openTaskUI(self):

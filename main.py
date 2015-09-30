@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main.ui'
 #
-# Created: Wed Sep 30 15:32:03 2015
+# Created: Wed Sep 30 17:42:43 2015
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -132,8 +132,8 @@ class Ui_Main(object):
         Main.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
         self.task_add_menu = QtWidgets.QAction(Main)
         self.task_add_menu.setObjectName("task_add_menu")
-        self.action = QtWidgets.QAction(Main)
-        self.action.setObjectName("action")
+        self.fast_task_add_menu = QtWidgets.QAction(Main)
+        self.fast_task_add_menu.setObjectName("fast_task_add_menu")
         self.action_2 = QtWidgets.QAction(Main)
         self.action_2.setObjectName("action_2")
         self.action_4 = QtWidgets.QAction(Main)
@@ -200,7 +200,7 @@ class Ui_Main(object):
         self.menu_2.addSeparator()
         self.menu_2.addAction(self.action_10)
         self.menu_3.addAction(self.task_add_menu)
-        self.menu_3.addAction(self.action)
+        self.menu_3.addAction(self.fast_task_add_menu)
         self.menu_3.addAction(self.action_2)
         self.menu_3.addSeparator()
         self.menu_3.addAction(self.action_4)
@@ -249,7 +249,7 @@ class Ui_Main(object):
         self.menu_6.setTitle(_translate("Main", "Трекер"))
         self.toolBar.setWindowTitle(_translate("Main", "toolBar"))
         self.task_add_menu.setText(_translate("Main", "Добавить задачу"))
-        self.action.setText(_translate("Main", "Быстрое создание задачи"))
+        self.fast_task_add_menu.setText(_translate("Main", "Быстрое создание задачи"))
         self.action_2.setText(_translate("Main", "Создать событие"))
         self.action_4.setText(_translate("Main", "Список задач"))
         self.action_5.setText(_translate("Main", "Выполненные задачи"))
@@ -268,8 +268,7 @@ class Ui_Main(object):
         self.action_22.setText(_translate("Main", "События"))
         self.action_24.setText(_translate("Main", "О программе"))
         self.task_add_bar.setText(_translate("Main", "Добавить задачу"))
-        self.add_fast_task_bar.setText(_translate("Main", "Добавление быстрой задачи"))
-        self.add_fast_task_bar.setToolTip(_translate("Main", "Добавление быстрой задачи"))
+        self.add_fast_task_bar.setText(_translate("Main", "Быстрое создание задачи"))
         self.tracker_bar.setText(_translate("Main", "Трекер"))
         self.tracker_bar.setToolTip(_translate("Main", "Показать трекер"))
         self.add_tracker_note_bar.setText(_translate("Main", "Добавить в трекер"))

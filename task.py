@@ -5,9 +5,9 @@
 from os import path
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5 import QtSql
-from taskui import Ui_AddTask
+from ftaskui import Ui_AddFastTask
 
-class Task(QtWidgets.QDialog, Ui_AddTask):
+class Task(QtWidgets.QDialog, Ui_AddFastTask):
     
     def __init__(self, taskList):
         super().__init__()
