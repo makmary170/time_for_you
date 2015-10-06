@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AddFastTask</class>
- <widget class="QDialog" name="AddFastTask">
+ <class>AddTask</class>
+ <widget class="QDialog" name="AddTask">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -267,7 +267,7 @@
   <connection>
    <sender>btn</sender>
    <signal>accepted()</signal>
-   <receiver>AddFastTask</receiver>
+   <receiver>AddTask</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -283,7 +283,7 @@
   <connection>
    <sender>btn</sender>
    <signal>rejected()</signal>
-   <receiver>AddFastTask</receiver>
+   <receiver>AddTask</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

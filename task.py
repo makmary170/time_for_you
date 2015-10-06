@@ -7,12 +7,12 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5 import QtSql
 from ftaskui import Ui_AddFastTask
 
-class Task(QtWidgets.QDialog, Ui_AddFastTask):
+class FastTask(QtWidgets.QDialog, Ui_AddFastTask):
     
     def __init__(self, taskList):
         super().__init__()
         self.setupUi(self)
-        self.btn.accepted.connect(lambda: self.createTask(self.nameEdit.text(), self.descEdit.toPlainText()))
+        self.btn.accepted.connect(lambda: self.createTask(self.nameEdit.text(), self.setPrior.itemText))
         self.taskList = taskList # Объект списка класса Main. Делаем его атрибутом для вызова в функциях
 
     def connect(self):
@@ -21,19 +21,15 @@ class Task(QtWidgets.QDialog, Ui_AddFastTask):
         self.connectdb.open()
         self.query = QtSql.QSqlQuery(self.connectdb)
         self.query.exec('''CREATE TABLE if not exists tasks
-                          (Name text, Desc text)''')
+                          (Name text, Desc text, Start text, Dedline text,
+                           Priority text, Category text, Timework text)''')
         
-    def createTask(self, name, desc):
+    def createTask(self, name, prior):
         if len(self.nameEdit.text()):
-            self.query.exec("INSERT INTO tasks VALUES ('%s','%s')" % (name, desc))
+            self.query.exec("INSERT INTO tasks (Name, Priority)\
+                            VALUES ('%s','%s')" % (name, prior))
             self.genTasks()
             self.close()
-        else:
-            self.textError = QtWidgets.QLabel(self)
-            self.textError.setGeometry(QtCore.QRect(40, 120, 431, 20))
-            self.textError.setObjectName("textError")
-            self.textError.setText("<html><head/><body><p><span style=\" font-size:12pt; color:#e21414;\">Название должно содержать не менее 3-ех символов!</span></p></body></html>")
-            self.textError.show()
         
     def genTasks(self):
         self.query = QtSql.QSqlQuery("select Name from tasks", self.connectdb)
