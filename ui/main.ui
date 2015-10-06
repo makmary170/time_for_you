@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>796</width>
-    <height>578</height>
+    <width>844</width>
+    <height>604</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -44,7 +44,7 @@
        </attribute>
        <layout class="QHBoxLayout" name="horizontalLayout_4">
         <item>
-         <widget class="QTableView" name="tableView">
+         <widget class="QTableWidget" name="tableWidget">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
             <horstretch>8</horstretch>
@@ -57,6 +57,29 @@
             <height>0</height>
            </size>
           </property>
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <column>
+           <property name="text">
+            <string>Начало</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Название</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Описание</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Окончание</string>
+           </property>
+          </column>
          </widget>
         </item>
        </layout>
@@ -128,7 +151,7 @@
          </size>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="tab_3">
          <attribute name="title">
@@ -136,7 +159,7 @@
          </attribute>
          <layout class="QGridLayout" name="gridLayout_3">
           <item row="0" column="0">
-           <widget class="QListWidget" name="taskList">
+           <widget class="QListWidget" name="gtdList">
             <property name="font">
              <font>
               <pointsize>9</pointsize>
@@ -163,7 +186,38 @@
          </attribute>
          <layout class="QGridLayout" name="gridLayout_2">
           <item row="0" column="0">
-           <widget class="QColumnView" name="columnView"/>
+           <widget class="QTableWidget" name="taskList">
+            <column>
+             <property name="text">
+              <string>Название</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Описание</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Приоритет</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Группа</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Начало</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Окончание</string>
+             </property>
+            </column>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -178,7 +232,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>796</width>
+     <width>844</width>
      <height>25</height>
     </rect>
    </property>
@@ -374,7 +428,7 @@
   <action name="task_add_bar">
    <property name="icon">
     <iconset>
-     <normaloff>icons/done2.svg</normaloff>icons/done2.svg</iconset>
+     <normaloff>../icons/contract11.svg</normaloff>../icons/contract11.svg</iconset>
    </property>
    <property name="text">
     <string>Добавить задачу</string>
@@ -383,7 +437,7 @@
   <action name="add_fast_task_bar">
    <property name="icon">
     <iconset>
-     <normaloff>icons/contract11.svg</normaloff>icons/contract11.svg</iconset>
+     <normaloff>../icons/done2.svg</normaloff>../icons/done2.svg</iconset>
    </property>
    <property name="text">
     <string>Быстрое создание задачи</string>
@@ -392,7 +446,7 @@
   <action name="tracker_bar">
    <property name="icon">
     <iconset>
-     <normaloff>icons/time36.svg</normaloff>icons/time36.svg</iconset>
+     <normaloff>../icons/time36.svg</normaloff>../icons/time36.svg</iconset>
    </property>
    <property name="text">
     <string>Трекер</string>
@@ -404,7 +458,7 @@
   <action name="add_tracker_note_bar">
    <property name="icon">
     <iconset>
-     <normaloff>icons/deadlines.svg</normaloff>icons/deadlines.svg</iconset>
+     <normaloff>../icons/deadlines.svg</normaloff>../icons/deadlines.svg</iconset>
    </property>
    <property name="text">
     <string>Добавить в трекер</string>
@@ -416,7 +470,7 @@
   <action name="add_event_bar">
    <property name="icon">
     <iconset>
-     <normaloff>icons/agreement.svg</normaloff>icons/agreement.svg</iconset>
+     <normaloff>../icons/agreement.svg</normaloff>../icons/agreement.svg</iconset>
    </property>
    <property name="text">
     <string>Добавить событие</string>

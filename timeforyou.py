@@ -3,21 +3,37 @@
 # -*- coding: utf-8 -*-
 
 import sys
-from PyQt5 import QtCore, QtGui, QtWidgets
-from main import Ui_Main
+from os import path
+from PyQt5 import QtCore, QtGui, QtWidgets, uic
+from PyQt5 import QtSql
 from task import FastTask
 
-class Main(QtWidgets.QMainWindow, Ui_Main):
+class Main(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setupUi(self)
-        self.workTask = FastTask(self.taskList)   # Передаем объект модели классу Task                     
-        self.workTask.connect()               # для заполнения списка задач из БД
-        self.fast_task_add_menu.triggered.connect(self.openTaskUI)
-        self.workTask.genTasks() 
+        uic.loadUi('ui/main.ui', self)
+        self.connect()
+        self.fastTask = FastTask(self.gtdList, self.query, self.connectdb)   # Передаем объект модели классу Task                     
+                   # для заполнения списка задач из БД
+        #self.Task = Task(self.taskList)
+        self.fast_task_add_menu.triggered.connect(self.openFastTaskUI)
+        #self.task_add_menu.triggered.connect(self.openTaskUI)
+        self.fastTask.genTasks()
+
+    def connect(self):
+        self.connectdb = QtSql.QSqlDatabase.addDatabase("QSQLITE", "Base")
+        self.connectdb.setDatabaseName(path.expanduser('~/tasks.db'))
+        self.connectdb.open()
+        self.query = QtSql.QSqlQuery(self.connectdb)
+        self.query.exec('''CREATE TABLE if not exists tasks
+                          (Name text, Desc text, Start text, Dedline text,
+                           Priority text, Category text, Timework text)''')
         
+    def openFastTaskUI(self):
+        self.fastTask.exec()
+
     def openTaskUI(self):
-        self.workTask.exec()
+        self.Task.exec()
         
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
