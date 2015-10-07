@@ -16,7 +16,9 @@ class Main(QtWidgets.QMainWindow):
         self.connect()
         self.fastTask = FastTask(self.gtdList, self.taskList, self.query, self.connectdb)
         self.fast_task_add_menu.triggered.connect(self.openFastTaskUI)
-        self.fastTask.genTasks()
+        self.add_fast_task_bar.triggered.connect(self.openFastTaskUI)
+        self.fastTask.genGTDTasks()
+        self.fastTask.genAllTasks()
 
     def connect(self):
         self.connectdb = QtSql.QSqlDatabase.addDatabase("QSQLITE", "Base")
