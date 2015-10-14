@@ -30,14 +30,15 @@ class FastTask(QtWidgets.QDialog):
                 self.taskItem = QtWidgets.QListWidgetItem(self.queryGTD.value("Name"))
                 self.priority = self.queryGTD.value("Priority")
                 self.taskItem.setCheckState(QtCore.Qt.Unchecked)
-                self.priority
                 self.setTaskColor(self.taskItem, self.priority)
+                self.gtdList.addItem(self.taskItem)
         else:
             self.queryGTD.last()
             self.taskItem = QtWidgets.QListWidgetItem(self.queryGTD.value("Name"))
             self.priority = self.queryGTD.value("Priority")
             self.taskItem.setCheckState(QtCore.Qt.Unchecked)
             self.setTaskColor(self.taskItem, self.priority)
+            self.gtdList.addItem(self.taskItem)
 
     def genAllTasks(self):
         data = ["Name", "Desc", "Priority", "Category", "Start", "Deadline"]
@@ -49,25 +50,42 @@ class FastTask(QtWidgets.QDialog):
             self.taskList.setRowCount(elements.value(0)) # На основе кол-ва записей создаем кол-во строк в таблице задач
             
             while (self.queryList.next()):
+                self.priority = self.queryList.value("Priority")
                 for dataitem in data:
                     self.taskItem = QtWidgets.QTableWidgetItem(self.queryList.value(dataitem))
+                    self.setTaskColor(self.taskItem, self.priority)
                     self.taskList.setItem(0, column, self.taskItem)
                     column+=1
         else:
             self.queryList.last()
+            self.priority = self.queryList.value("Priority")
             needRow = self.taskList.rowCount() + 1 # Задаем общее число строк: кол-во существующих + 1
             self.taskList.setRowCount(needRow)
             for dataitem in data:
                     self.taskItem = QtWidgets.QTableWidgetItem(self.queryList.value(dataitem))
+                    self.setTaskColor(self.taskItem, self.priority)
                     self.taskList.setItem(needRow - 1, column, self.taskItem) # -1, потому что нумерация с 0!
                     column+=1
 
     def setTaskColor(self, taskItem, priority):
         """Функция определения цвета на основе приоритета задачи. После определения добавляет item"""
-        if priority == "Низкий":
-                    taskItem.setForeground(QtGui.QBrush(QtGui.QColor(96, 209, 39)))
-        elif priority == "Средний":
-                    taskItem.setForeground(QtGui.QBrush(QtGui.QColor(238, 184, 54)))
-        elif priority == "Высокий":
-                    taskItem.setForeground(QtGui.QBrush(QtGui.QColor(255, 0, 0)))
-        self.gtdList.addItem(taskItem)
+        green = QtGui.QBrush(QtGui.QColor(96, 209, 39))
+        orange = QtGui.QBrush(QtGui.QColor(243, 165, 52))
+        red  = QtGui.QBrush(QtGui.QColor(255, 0, 0))
+        self.taskItem = taskItem
+        if self.taskItem.__class__ == QtWidgets.QListWidgetItem:
+            if priority == "Низкий":
+                        self.taskItem.setForeground(green)
+            elif priority == "Средний":
+                        self.taskItem.setForeground(orange)
+            elif priority == "Высокий":
+                        self.taskItem.setForeground(red)
+            
+        elif self.taskItem.__class__ == QtWidgets.QTableWidgetItem:
+            if priority == "Низкий":
+                        self.taskItem.setBackground(green)
+            elif priority == "Средний":
+                        self.taskItem.setBackground(orange)
+            elif priority == "Высокий":
+                        self.taskItem.setBackground(red)
+            
